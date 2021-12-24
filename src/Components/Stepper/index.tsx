@@ -12,23 +12,48 @@ const steps = [
   'Payment',
   'Review',
 ];
+export type InitialValueType = {
+  firstName?:string,lastName?:string,email?:string,cardType?:string,cardNumber?:string
+}
+export type ReviewTypes = {
+  submit:React.Dispatch<React.SetStateAction<number>>,
+  values:InitialValueType
+}
+export type Props = {
+  submit:React.Dispatch<React.SetStateAction<number>>
+  setValues:React.Dispatch<React.SetStateAction<InitialValueType>>
+  preValue:InitialValueType
+}
 
-const getStepsContent = (step:number) => {
+
+const getStepsContent = (step:number,
+  setActiveStep:React.Dispatch<React.SetStateAction<number>>,
+  setValues:React.Dispatch<React.SetStateAction<InitialValueType>>,
+  Values:InitialValueType
+  
+  ) => {
     switch(step){
         case 0:
-            return <PersonalInfo />
+            return <PersonalInfo submit={setActiveStep} preValue={Values} setValues={setValues}/>
         case 1:
-            return <Payment />
+            return <Payment submit={setActiveStep} preValue={Values} setValues={setValues}/>
         case 2:
-            return <Review />
+            return <Review submit={setActiveStep} Values={Values}/>
         default:
             return "Unknown Values"
     }
 }
-
+const InitialVal:InitialValueType = {
+  firstName:'',
+  lastName:'',
+  email:'',
+  cardType:'',
+  cardNumber:'',
+}
 export default function HorizontalLabelPositionBelowStepper() {
     const [activeStep,setActiveStep ] = React.useState(0)
-
+    const [Values,setValues] = React.useState(InitialVal)
+    
     return (
     <Box sx={{marginTop:"20px", boxShadow:1,width: '100%' }}>
       <Stepper activeStep={activeStep} alternativeLabel>
@@ -39,7 +64,7 @@ export default function HorizontalLabelPositionBelowStepper() {
         ))}
       </Stepper>
       {
-          getStepsContent(activeStep)
+          getStepsContent(activeStep,setActiveStep,setValues,Values)
       }
     </Box>
   );

@@ -2,10 +2,14 @@ import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import TextField from '@mui/material/TextField'
-const PersonalInfo = () => {
+import { Button } from '@mui/material';
+import { Props } from '../Stepper';
+
+const PersonalInfo = (props:Props) => {
+  const { submit, setValues,preValue} = props;
   return (
     <Formik
-      initialValues={{ firstName: '', lastName: '', email: '' }}
+      initialValues={preValue}
       validationSchema={Yup.object({
         firstName: Yup.string()
           .max(15, 'Must be 15 characters or less')
@@ -15,11 +19,13 @@ const PersonalInfo = () => {
           .required('Required'),
         email: Yup.string().email('Invalid email address').required('Required'),
       })}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
+      onSubmit={(values) => {
+        
+        submit(1)
+        setValues({
+          ...preValue,
+          ...values
+        })
       }}
     >
       <Form>
@@ -32,16 +38,15 @@ const PersonalInfo = () => {
           </div>
 
           <div className='2ndChild'>
-            <label htmlFor="lastName">Last Name</label>
-            <Field name="lastName" type="text" />
+            <Field as={TextField} variant="outlined" label="Last Name" name="lastName" type="text" />
             <ErrorMessage name="lastName" />
           </div>
           <div className='3rdChild'>
-            <label htmlFor="email">Email Address</label>
-            <Field name="email" type="email" />
+            <Field as={TextField} variant="outlined" label="Email" name="email" type="email" />
             <ErrorMessage name="email" />
-
-            <button type="submit">Submit</button>
+          <div>
+            <Button variant='outlined' type="submit">Submit</Button>
+          </div>
           </div>
         </div>
       </Form>
