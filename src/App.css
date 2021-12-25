@@ -10,4 +10,18 @@
   text-align: center;
 
 }
+.Parent {
+  margin: 15px;
+  padding: 20px;
+}
+.Child {
+  display: flex-inline;
+  justify-content: center;
+  margin: 10px;
+}
 
+.success {
+  text-align:center;
+  margin: auto;
+  
+}

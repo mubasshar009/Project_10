@@ -1,4 +1,6 @@
 import { InitialValueType } from "../Stepper";
+import {Link} from 'react-router-dom';
+
 import Button from '@mui/material/Button'
 const Review = (props:{submit:React.Dispatch<React.SetStateAction<number>>,Values:InitialValueType}) => {
     const { submit,Values} = props;
@@ -11,8 +13,9 @@ const Review = (props:{submit:React.Dispatch<React.SetStateAction<number>>,Value
             <h3>Card Type = {Values.cardType}</h3>
             <h3>Card Number = {Values.cardNumber}</h3>
             <div>
-                <Button variant="outlined"  onClick={() => submit(1)}>Back</Button>
-                <Button variant="outlined">Confirm</Button>
+                <Button style={{marginRight:'10px',}} variant="outlined"  onClick={() => submit(1)}>Back</Button>
+                <Button variant="outlined">
+                <Link style={{textDecoration:'none'}} to="/success">Confirm</Link></Button>
             </div>
         </div>
     )

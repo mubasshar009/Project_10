@@ -31,19 +31,20 @@ const Payment = ({ submit,setValues ,preValue}: Props) => {
             <Form>
                 <div className='Parent'>
                     <h1>Payment Details</h1>
-                    <div className='1stChild'>
+                    <div className='Child'>
 
                         <Field as={TextField} variant="outlined" label="Card Type" name="cardType" type="text" />
                         <ErrorMessage name="cardType" />
                     </div>
 
-                    <div className='2ndChild'>
+                    <div className='Child'>
                         <Field as={TextField} variant="outlined" label="Card Number" name="cardNumber" type="string" />
                         <ErrorMessage name="cardNumber" />
                     </div>
-                    <div>
-                        <Button variant='outlined' type="submit">Submit</Button>
-                        <Button variant='outlined' onClick={() => submit(0)}>Back</Button>
+                    <div className='Child' style={{padding:'10px'}}>
+                    <Button variant='outlined' onClick={() => submit(0)}>Back</Button>
+                        <Button style={{marginLeft:'5px'}} variant='outlined' type="submit">Submit</Button>
+                        
                         
                     </div>
                 </div>

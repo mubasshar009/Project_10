@@ -31,20 +31,20 @@ const PersonalInfo = (props:Props) => {
       <Form>
         <div className='Parent'>
           <h1>Personal Info</h1>
-          <div className='1stChild'>
+          <div className='Child'>
           
             <Field as={TextField} variant="outlined" label="First Name" name="firstName" type="text" />
             <ErrorMessage name="firstName" />
           </div>
 
-          <div className='2ndChild'>
+          <div className='Child'>
             <Field as={TextField} variant="outlined" label="Last Name" name="lastName" type="text" />
             <ErrorMessage name="lastName" />
           </div>
-          <div className='3rdChild'>
+          <div className='Child'>
             <Field as={TextField} variant="outlined" label="Email" name="email" type="email" />
             <ErrorMessage name="email" />
-          <div>
+          <div className='Child'>
             <Button variant='outlined' type="submit">Submit</Button>
           </div>
           </div>
