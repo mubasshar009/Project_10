@@ -15,13 +15,25 @@
   padding: 20px;
 }
 .Child {
-  display: flex-inline;
-  justify-content: center;
+  display: grid;
+  justify-content: space-around;
   margin: 10px;
 }
-
+.Error {
+  color: red;
+  font-size: 20px;
+}
 .success {
   text-align:center;
   margin: auto;
+  
+}
+.parentReview {
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+}
+.childReview {
+  margin: 20px;
   
 }

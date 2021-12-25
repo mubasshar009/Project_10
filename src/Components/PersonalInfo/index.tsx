@@ -34,16 +34,16 @@ const PersonalInfo = (props:Props) => {
           <div className='Child'>
           
             <Field as={TextField} variant="outlined" label="First Name" name="firstName" type="text" />
-            <ErrorMessage name="firstName" />
+            <ErrorMessage  name="firstName" >{msg => <div className='Error'>{msg}</div>}</ErrorMessage>
           </div>
 
           <div className='Child'>
             <Field as={TextField} variant="outlined" label="Last Name" name="lastName" type="text" />
-            <ErrorMessage name="lastName" />
+            <ErrorMessage name="lastName" >{msg => <div className='Error'>{msg}</div>}</ErrorMessage>
           </div>
           <div className='Child'>
             <Field as={TextField} variant="outlined" label="Email" name="email" type="email" />
-            <ErrorMessage name="email" />
+            <ErrorMessage name="email"  >{msg => <div className='Error'>{msg}</div>}</ErrorMessage>
           <div className='Child'>
             <Button variant='outlined' type="submit">Submit</Button>
           </div>

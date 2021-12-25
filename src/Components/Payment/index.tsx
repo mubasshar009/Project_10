@@ -14,7 +14,8 @@ const Payment = ({ submit,setValues ,preValue}: Props) => {
                     .max(15, 'Must be 15 characters or less')
                     .required('Required'),
                 cardNumber: Yup.number()
-                    .min(6,'Minimum 6 Characters')
+                    .max(1000000000000,"Invalid Format")
+                    .min(100000000000,"Should be 12 Characters")
                     .required('Required'),
 
             })}
@@ -34,12 +35,12 @@ const Payment = ({ submit,setValues ,preValue}: Props) => {
                     <div className='Child'>
 
                         <Field as={TextField} variant="outlined" label="Card Type" name="cardType" type="text" />
-                        <ErrorMessage name="cardType" />
+                        <ErrorMessage className='Error' name="cardType">{msg => <div className='Error'>{msg}</div>}</ErrorMessage>
                     </div>
 
                     <div className='Child'>
-                        <Field as={TextField} variant="outlined" label="Card Number" name="cardNumber" type="string" />
-                        <ErrorMessage name="cardNumber" />
+                        <Field as={TextField} variant="outlined" label="Card Number" name="cardNumber" type="number" />
+                        <ErrorMessage className='Error' name="cardNumber">{msg => <div className='Error'>{msg}</div>}</ErrorMessage>
                     </div>
                     <div className='Child' style={{padding:'10px'}}>
                     <Button variant='outlined' onClick={() => submit(0)}>Back</Button>
